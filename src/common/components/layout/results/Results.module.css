@@ -1,0 +1,25 @@
+.section {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    gap: 50px;
+    margin-bottom: 20px;
+}
+
+.containerSets {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.containerResults {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.textResult {
+    font-weight: 400;
+    font-size: x-large;
+    line-height: 2.2rem;
+}

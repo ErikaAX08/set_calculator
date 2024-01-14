@@ -1,0 +1,5 @@
+.container {
+    color: var(--primary-text-color);
+    font-size: xx-large;
+    font-weight: bold;
+}

@@ -1,0 +1,73 @@
+.container {
+    height: fit-content;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.container div:nth-child(odd):last-child {
+    grid-area: auto / auto / span 2 / span 2;
+}
+
+.buttonOption {
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--secondary-background-color);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background linear 200ms;
+}
+
+.buttonIcon {
+    font-size: x-large;
+    font-weight: bold;
+    color: var(--primary-text-color);
+}
+
+.buttonOption:hover {
+    background-color: var(--primary-color);
+}
+
+.buttonOption:hover .buttonSubtitle {
+    color: var(--primary-text-color);
+}
+
+.buttonSubtitle {
+    font-size: small;
+}
+
+.mathSymboltText {
+    font-size: x-large;
+    font-weight: bold;
+    color: var(--primary-text-color);
+}
+
+.mathSymboltTextSub {
+    font-size: 0.8em;
+}
+
+.buttonCalculate {
+    padding: 15px;
+    width: 100%;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    border: none;
+    color: var(--primary-text-color);
+    font-weight: bold;
+    font-size: medium;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        gap: 20px;
+    }
+}

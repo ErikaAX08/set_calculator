@@ -1,0 +1,9 @@
+.container {
+    background-color: var(--primary-color);
+    padding: 15px;
+    border-radius: 10px;
+    width: fit-content;
+    color: var(--primary-text-color);
+    font-weight: bold;
+    cursor: pointer;
+}

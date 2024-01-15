@@ -1,0 +1,6 @@
+export { default as handleOperation } from "./operationHandler"
+export { Compare } from "./operations"
+export { PowerSet } from "./operations"
+export { Intersection } from "./operations"
+export { Union } from "./operations"
+export { RelativeComplement } from "./operations"

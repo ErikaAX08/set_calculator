@@ -26,6 +26,14 @@
     transition: background linear 200ms;
 }
 
+.selectedOption {
+    background-color: var(--primary-text-color);
+}
+
+.selectedOption .mathSymboltText {
+    color: var(--background-color);
+}
+
 .buttonIcon {
     font-size: x-large;
     font-weight: bold;
@@ -36,12 +44,17 @@
     background-color: var(--primary-color);
 }
 
+.buttonOption:hover .mathSymboltText {
+    color: var(--primary-text-color);
+}
+
 .buttonOption:hover .buttonSubtitle {
     color: var(--primary-text-color);
 }
 
 .buttonSubtitle {
     font-size: small;
+    font-weight: bold;
 }
 
 .mathSymboltText {

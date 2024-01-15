@@ -1,8 +1,15 @@
 import styles from "./Item.module.css"
 
-function ItemSet() {
+import React from "react";
+
+interface ItemSetProps {
+  set: string;
+  letter: string;
+}
+
+const ItemSet: React.FC<ItemSetProps> = ({ set, letter }) => {
   return (
-    <div className={styles.container}>{`{ 32, 54, 6, 75, 22, r3, f4 }`}</div>
+    <div className={styles.container}>{`${letter} = { ${set} }`}</div>
   )
 }
 

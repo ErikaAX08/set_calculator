@@ -4,6 +4,10 @@
     font-weight: bold;
 }
 
+.footer_hide {
+    display: none;
+}
+
 .link {
     color: var(--primary-color);
     text-decoration: none;

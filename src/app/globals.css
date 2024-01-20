@@ -1,25 +1,25 @@
 :root {
-    --primary-color: #4248f6;
-    --background-color: #000101;
-    --secondary-background-color: #070707;
-    --primary-text-color: #fff;
-    --secondary-text-color: #6b6b6b;
+  --primary-color: #4248f6;
+  --background-color: #000101;
+  --secondary-background-color: #101010;
+  --primary-text-color: #fff;
+  --secondary-text-color: #6b6b6b;
 }
 
 * {
-    padding: 0px;
-    margin: 0px;
+  padding: 0px;
+  margin: 0px;
 }
 
 ::-webkit-scrollbar {
-    width: 5px;
+  width: 5px;
 }
-  
+
 ::-webkit-scrollbar-track {
-    background-color: var(--secondary-background-color);
+  background-color: var(--secondary-background-color);
 }
-  
+
 ::-webkit-scrollbar-thumb {
-    background-color: #6b6b6b11;
-    border-radius: 6px;
+  background-color: #6b6b6b04;
+  border-radius: 6px;
 }

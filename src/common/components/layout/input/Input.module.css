@@ -16,7 +16,8 @@
     border-radius: 10px;
     outline: none;
     background-color: var(--secondary-background-color);
-    font-size: medium;
+    font-size: large;
+    letter-spacing: 0.03rem;
     color: var(--primary-text-color);
 }
 

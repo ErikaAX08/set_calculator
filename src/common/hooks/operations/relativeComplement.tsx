@@ -1,4 +1,6 @@
-const relativeComplement = (sets: string[], letters: string[]) => {
+import { Set } from "@components/set";
+
+const relativeComplement = (sets: Set[], letters: string[]) => {
   let result: string[] = [];
   result.push("This feature is in progress!");
 

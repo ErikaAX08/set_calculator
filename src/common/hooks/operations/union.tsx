@@ -1,4 +1,6 @@
-const union = (sets: string[], letters: string[]) => {
+import { Set } from "@components/set";
+
+const union = (sets: Set[], letters: string[]) => {
   let result: string[] = [];
   result.push("This feature is in progress!");
 

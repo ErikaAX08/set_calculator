@@ -1,13 +1,15 @@
-const powerSet = (sets: string[], letters: string[]): string[] => {
+import { Set } from "@components/set";
+
+const powerSet = (sets: Set[], letters: string[]): string[] => {
   let result: string[] = [];
 
-  let mainSet = sets[0].split(",");
+  let mainSet = sets[0].elements
   for (
     let currentSetIndex = 1;
     currentSetIndex <= sets.length - 1;
     currentSetIndex++
   ) {
-    let nextSet = sets[currentSetIndex].split(",");
+    let nextSet = sets[currentSetIndex].elements
     mainSet = [...mainSet, ...nextSet];
   }
 

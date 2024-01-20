@@ -5,9 +5,10 @@ import {
   Union,
   RelativeComplement,
 } from "@hooks/index";
+import { Set } from "@components/set";
 
 const handleOperation = (
-  sets: string[],
+  sets: Set[],
   letters: string[],
   selectedOperation: number
 ): string[] => {
@@ -19,18 +20,18 @@ const handleOperation = (
     case 0:
       result = Compare(sets, letters);
       break;
-    case 1:
-      result = PowerSet(sets, letters);
-      break;
-    case 2:
-      result = Intersection(sets, letters);
-      break;
-    case 3:
-      result = Union(sets, letters);
-      break;
-    case 4:
-      result = RelativeComplement(sets, letters);
-      break;
+    // case 1:
+    //   result = PowerSet(sets, letters);
+    //   break;
+    // case 2:
+    //   result = Intersection(sets, letters);
+    //   break;
+    // case 3:
+    //   result = Union(sets, letters);
+    //   break;
+    // case 4:
+    //   result = RelativeComplement(sets, letters);
+    //   break;
     default:
       break;
   }

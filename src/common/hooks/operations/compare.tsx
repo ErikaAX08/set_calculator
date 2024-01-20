@@ -1,13 +1,15 @@
-const compare = (sets: string[], letters: string[]): string[] => {
+import { Set } from "@components/set";
+
+const compare = (sets: Set[], letters: string[]): string[] => {
   let result: string[] = [];
 
   for (let currentSetIndex = 0; currentSetIndex < sets.length; currentSetIndex++) {
-    const mainSet = sets[currentSetIndex].split(",");
+    const mainSet = sets[currentSetIndex].elements
     result.push(`Comparisons with ${letters[currentSetIndex]}`);
 
     for (let nextSetIndex = 0; nextSetIndex < sets.length; nextSetIndex++) {
       if (nextSetIndex !== currentSetIndex) {
-        const nextSet = sets[nextSetIndex].split(",");
+        const nextSet = sets[nextSetIndex].elements
         let isEqual: boolean = true;
         let isSubset:  boolean = true;
 

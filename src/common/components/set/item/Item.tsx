@@ -1,4 +1,4 @@
-import styles from "./Item.module.css"
+import styles from "./Item.module.css";
 
 import React from "react";
 
@@ -9,8 +9,13 @@ interface ItemSetProps {
 
 const ItemSet: React.FC<ItemSetProps> = ({ set, letter }) => {
   return (
-    <div className={styles.container}>{`${letter} = { ${set} }`}</div>
-  )
-}
+    <h3
+      className={styles.container}
+      style={{
+        animation: `typing 0.8s steps(${set.length}, end)`,
+      }}
+    >{`${letter} = { ${set} }`}</h3>
+  );
+};
 
-export default ItemSet
+export default ItemSet;

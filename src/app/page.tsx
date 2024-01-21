@@ -37,8 +37,8 @@ export default function Home() {
           ...result,
           {
             text: "The set entered is not a subset of U",
-            type: "title",
-            color: "rgb(255 99 99)"
+            type: "default",
+            color: "rgb(255 99 99)",
           },
         ]);
     }

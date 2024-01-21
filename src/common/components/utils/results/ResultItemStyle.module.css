@@ -1,12 +1,16 @@
 .resultTitle {
   font-size: large;
   color: var(--primary-text-color);
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .textResult {
   font-weight: 400;
   font-size: larger;
   line-height: 2.2rem;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .boldText {
@@ -14,6 +18,8 @@
   font-size: larger;
   line-height: 2.2rem;
   color: var(--primary-text-color);
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 @media screen and (min-width: 768px) {

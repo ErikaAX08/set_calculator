@@ -3,3 +3,9 @@
     font-size: x-large;
     font-weight: bold;
 }
+
+@media screen and (min-width: 768px) {
+    .container {
+        font-size: xx-large;
+    }
+}

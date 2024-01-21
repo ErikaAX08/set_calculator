@@ -2,5 +2,12 @@
     color: var(--primary-text-color);
     font-size: xx-large;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
+
+@media screen and (min-width: 768px) {
+    .title {
+        font-size: xxx-large;
+    }
+  }
+  

@@ -1,6 +1,6 @@
 interface ResultItem {
     text: string;
-    type: "title" | "boldText" | "coloredText" | "default";
+    type: "title" | "boldText" | "default";
     color?: string;
 }
 

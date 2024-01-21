@@ -15,8 +15,6 @@ const getResultElement = (resultItem: ResultItem): JSX.Element => {
           {resultItem.text}
         </p>
       );
-    case "coloredText":
-      return <p style={{ color: resultItem.color }}>{resultItem.text}</p>;
     default:
       return (
         <p className={styles.textResult} style={{ color: resultItem.color }}>

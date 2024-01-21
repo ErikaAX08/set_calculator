@@ -15,8 +15,6 @@ const handleOperation = (
 ): ResultItem[] => {
   let result: ResultItem[] = [];
   
-  console.log(`Selected operation ${selectedOperation}`)
-
   switch (selectedOperation) {
     case 0:
       result = Compare(sets, letters);

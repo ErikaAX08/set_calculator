@@ -6,7 +6,7 @@ const compare = (sets: Set[], letters: string[]): ResultItem[] => {
 
   for (let currentSetIndex = 0; currentSetIndex < sets.length; currentSetIndex++) {
     const mainSet = sets[currentSetIndex].elements
-    result.push({ text: `Comparisons with ${letters[currentSetIndex]}`, type: "boldText" });
+    result.push({ text: `Comparisons with ${letters[currentSetIndex]}`, type: "title" });
 
     for (let nextSetIndex = 0; nextSetIndex < sets.length; nextSetIndex++) {
       if (nextSetIndex !== currentSetIndex) {
@@ -20,7 +20,6 @@ const compare = (sets: Set[], letters: string[]): ResultItem[] => {
             isSubset = false
             break;
           }
-          console.log(`${mainSet} contiene ${nextSet[index]}? ${isEqual}`);
         }
 
         let comparisonExpression = isEqual

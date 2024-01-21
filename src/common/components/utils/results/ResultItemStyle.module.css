@@ -1,9 +1,31 @@
 .resultTitle {
-    color: var(--primary-text-color);
+  font-size: large;
+  color: var(--primary-text-color);
 }
 
 .textResult {
-    font-weight: 400;
+  font-weight: 400;
+  font-size: larger;
+  line-height: 2.2rem;
+}
+
+.boldText {
+  font-weight: bold;
+  font-size: larger;
+  line-height: 2.2rem;
+  color: var(--primary-text-color);
+}
+
+@media screen and (min-width: 768px) {
+  .resultTitle {
     font-size: x-large;
-    line-height: 2.2rem;
+  }
+
+  .textResult {
+    font-size: x-large;
+  }
+
+  .boldText {
+    font-size: x-large;
+  }
 }

@@ -1,13 +1,14 @@
 import styles from "./Results.module.css";
 import { ItemSet, UniversalSet } from "@components/set";
 import { Set } from "@components/set";
+import { ResultItem, getResultElement } from "@components/utils/results";
 
 import React from "react";
 
 interface ResultProps {
   universalSet: Set | null;
   sets: Set[];
-  result: string[];
+  result: ResultItem[];
   letters: string[];
 }
 
@@ -35,9 +36,9 @@ const Results: React.FC<ResultProps> = ({
 
       <div className={styles.containerResults}>
         {result.map((result, index) => (
-          <p key={index} className={styles.textResult}>
-            {result}
-          </p>
+          <div key={index} className={styles.resultItem}>
+            {getResultElement(result)}
+          </div>
         ))}
       </div>
     </section>

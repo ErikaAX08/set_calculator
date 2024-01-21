@@ -1,0 +1,9 @@
+.resultTitle {
+    color: var(--primary-text-color);
+}
+
+.textResult {
+    font-weight: 400;
+    font-size: x-large;
+    line-height: 2.2rem;
+}

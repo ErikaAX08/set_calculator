@@ -3,6 +3,7 @@ import styles from "./page.module.css";
 import { Footer, Header, Keyboard, Input, Results } from "@components/layout";
 import { handleOperation } from "@hooks/index";
 import { cleanSet } from "@components/utils";
+import { ResultItem } from "@components/utils/results";
 import { Set } from "@components/set";
 
 import { useState, useEffect } from "react";
@@ -12,28 +13,34 @@ export default function Home() {
   const [universalSet, setUniversalSet] = useState<Set | null>(null);
   const [selectedOperation, setSelectedOperation] = useState<number>(0);
   const [letters, setLetters] = useState<string[]>([]);
-  const [result, setResult] = useState<string[]>([]);
+  const [result, setResult] = useState<ResultItem[]>([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const placeholders = ["Enter the universal set", "Enter a set"];
 
   const handleAddSet = (newSet: string) => {
     if (universalSet === null) setUniversalSet(cleanSet(newSet));
-    
     else {
       const newSetResult: Set = cleanSet(newSet);
       let isSubset: boolean = true;
-      
+
       newSetResult.elements.map((item: string) => {
         if (!universalSet.elements.includes(item)) {
           isSubset = false;
         }
       });
-    
+
       if (isSubset) {
         setSets([...sets, newSetResult]);
-      }
-      else setResult([...result, "The set entered is not a subset of U"]);
+      } else
+        setResult([
+          ...result,
+          {
+            text: "The set entered is not a subset of U",
+            type: "title",
+            color: "rgb(255 99 99)"
+          },
+        ]);
     }
   };
 

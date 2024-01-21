@@ -1,11 +1,12 @@
 import { Set } from "@components/set";
+import { ResultItem } from "@components/utils/results";
 
-const compare = (sets: Set[], letters: string[]): string[] => {
-  let result: string[] = [];
+const compare = (sets: Set[], letters: string[]): ResultItem[] => {
+  let result: ResultItem[] = [];
 
   for (let currentSetIndex = 0; currentSetIndex < sets.length; currentSetIndex++) {
     const mainSet = sets[currentSetIndex].elements
-    result.push(`Comparisons with ${letters[currentSetIndex]}`);
+    result.push({ text: `Comparisons with ${letters[currentSetIndex]}`, type: "boldText" });
 
     for (let nextSetIndex = 0; nextSetIndex < sets.length; nextSetIndex++) {
       if (nextSetIndex !== currentSetIndex) {
@@ -30,7 +31,7 @@ const compare = (sets: Set[], letters: string[]): string[] => {
           ? `${letters[currentSetIndex]} ⊆ ${letters[nextSetIndex]}`
           : `${letters[currentSetIndex]} ⊈ ${letters[nextSetIndex]}`;
           
-        result.push(`${comparisonExpression} : ${subsetExpression}`);
+        result.push({ text: `${comparisonExpression} : ${subsetExpression}`, type: "default" });
         
       }
     }

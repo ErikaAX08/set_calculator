@@ -6,13 +6,14 @@ import {
   RelativeComplement,
 } from "@hooks/index";
 import { Set } from "@components/set";
+import { ResultItem } from "@components/utils/results";
 
 const handleOperation = (
   sets: Set[],
   letters: string[],
   selectedOperation: number
-): string[] => {
-  let result: string[] = [];
+): ResultItem[] => {
+  let result: ResultItem[] = [];
   
   console.log(`Selected operation ${selectedOperation}`)
 

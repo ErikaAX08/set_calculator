@@ -6,7 +6,7 @@ import { cleanSet } from "@components/utils";
 import { ResultItem } from "@components/utils/results";
 import { Set } from "@components/set";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function Home() {
   const [sets, setSets] = useState<Set[]>([]);
@@ -15,6 +15,8 @@ export default function Home() {
   const [letters, setLetters] = useState<string[]>([]);
   const [result, setResult] = useState<ResultItem[]>([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const resultsContainerRef = useRef<HTMLDivElement>(null)
+  const [automaticScroll, setAutomaticScroll] = useState<boolean>(false)
 
   const placeholders = ["Enter the universal set", "Enter a set"];
 
@@ -79,16 +81,39 @@ export default function Home() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+  
+  useEffect(() => {
+    const scrollToEnd = () => {
+      if (automaticScroll && resultsContainerRef.current) {
+        const container = resultsContainerRef.current;
+        container.scrollTop = container.scrollHeight + 3000;
+      }
+    };
+    
+    scrollToEnd();
+  
+    const intervalId: NodeJS.Timeout = setInterval(scrollToEnd, 1000);
+  
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [resultsContainerRef, automaticScroll]);
+  
+  const handleResultsShowing = () => setAutomaticScroll(true)
+  
+  const handleResultsShown = () => setAutomaticScroll(false)
 
   return (
     <main className={styles.main}>
       <div className={styles.contentContainer}>
-        <div>
+        <div ref={ resultsContainerRef } >
           <Results
             universalSet={universalSet}
             sets={sets}
             result={result}
             letters={letters}
+            onResultsShowing={ handleResultsShowing }
+            onResultsShown={  handleResultsShown }
           />
           <Input onAddSet={handleAddSet} placeholders={placeholders} />
         </div>

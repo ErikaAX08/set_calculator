@@ -10,6 +10,8 @@ interface ResultProps {
   sets: Set[];
   result: ResultItem[];
   letters: string[];
+  onResultsShowing: () => void;
+  onResultsShown: () => void;
 }
 
 const Results: React.FC<ResultProps> = ({
@@ -17,6 +19,8 @@ const Results: React.FC<ResultProps> = ({
   sets,
   result,
   letters,
+  onResultsShowing,
+  onResultsShown
 }) => {
   const [visibleResults, setVisibleResults] = useState<ResultItem[]>([]);
 
@@ -25,6 +29,8 @@ const Results: React.FC<ResultProps> = ({
 
     const renderResultsSequentially = async () => {
       setVisibleResults([]);
+
+      onResultsShowing();
 
       for (let i = 0; i < result.length; i++) {
         await new Promise((resolve) => setTimeout(resolve, 500));
@@ -39,6 +45,9 @@ const Results: React.FC<ResultProps> = ({
           }
         }
       }
+      
+      setTimeout(() => { onResultsShown(); }, 1000);
+      
     };
 
     renderResultsSequentially();
@@ -46,6 +55,7 @@ const Results: React.FC<ResultProps> = ({
     return () => {
       isMounted = false;
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [result]);
 
   return (

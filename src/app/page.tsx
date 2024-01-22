@@ -15,8 +15,8 @@ export default function Home() {
   const [letters, setLetters] = useState<string[]>([]);
   const [result, setResult] = useState<ResultItem[]>([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const resultsContainerRef = useRef<HTMLDivElement>(null)
-  const [automaticScroll, setAutomaticScroll] = useState<boolean>(false)
+  const resultsContainerRef = useRef<HTMLDivElement>(null);
+  const [automaticScroll, setAutomaticScroll] = useState<boolean>(false);
 
   const placeholders = ["Enter the universal set", "Enter a set"];
 
@@ -47,16 +47,18 @@ export default function Home() {
   };
 
   useEffect(() => {
-    setLetters((prevLetters) => {
-      let newLetter = "A";
+    if (sets.length > 0) {
+      setLetters((prevLetters) => {
+        let newLetter = "A";
 
-      if (prevLetters.length > 0) {
-        const lastLetter = prevLetters[prevLetters.length - 1];
-        newLetter = String.fromCharCode(lastLetter.charCodeAt(0) + 1);
-      }
+        if (prevLetters.length > 0) {
+          const lastLetter = prevLetters[prevLetters.length - 1];
+          newLetter = String.fromCharCode(lastLetter.charCodeAt(0) + 1);
+        }
 
-      return [...prevLetters, newLetter];
-    });
+        return [...prevLetters, newLetter];
+      });
+    }
   }, [sets]);
 
   useEffect(() => {
@@ -81,7 +83,7 @@ export default function Home() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  
+
   useEffect(() => {
     const scrollToEnd = () => {
       if (automaticScroll && resultsContainerRef.current) {
@@ -89,31 +91,31 @@ export default function Home() {
         container.scrollTop = container.scrollHeight + 5000;
       }
     };
-    
+
     scrollToEnd();
-  
+
     const intervalId: NodeJS.Timeout = setInterval(scrollToEnd, 100);
-  
+
     return () => {
       clearInterval(intervalId);
     };
   }, [resultsContainerRef, automaticScroll]);
-  
-  const handleResultsShowing = () => setAutomaticScroll(true)
-  
-  const handleResultsShown = () => setAutomaticScroll(false)
+
+  const handleResultsShowing = () => setAutomaticScroll(true);
+
+  const handleResultsShown = () => setAutomaticScroll(false);
 
   return (
     <main className={styles.main}>
       <div className={styles.contentContainer}>
-        <div ref={ resultsContainerRef } >
+        <div ref={resultsContainerRef}>
           <Results
             universalSet={universalSet}
             sets={sets}
             result={result}
             letters={letters}
-            onResultsShowing={ handleResultsShowing }
-            onResultsShown={  handleResultsShown }
+            onResultsShowing={handleResultsShowing}
+            onResultsShown={handleResultsShown}
           />
           <Input onAddSet={handleAddSet} placeholders={placeholders} />
         </div>
@@ -121,7 +123,7 @@ export default function Home() {
 
       <div className={styles.optionsContainer}>
         <Header onHandleMenuToggle={handleMenuToggle} isMenuOpen={isMenuOpen} />
-        <Keyboard isMenuOpen={isMenuOpen} />
+        <Keyboard isMenuOpen={isMenuOpen} isUniversalSet={ universalSet != null } letters={letters} />
         <Footer isMenuOpen={isMenuOpen} />
       </div>
     </main>

@@ -36,25 +36,13 @@
   height: fit-content;
   border-radius: 10px;
   outline: none;
-  padding: 20px 15px;
+  padding: 25px 15px;
   color: var(--primary-text-color);
   font-size: large;
 }
 
-.buttonCalculate {
-  padding: 15px;
-  width: 100%;
-  background-color: var(--primary-color);
-  border-radius: 10px;
-  border: none;
-  color: var(--primary-text-color);
-  font-weight: bold;
-  font-size: medium;
-  cursor: pointer;
-}
-
 .buttonOption {
-  height: fit-content;
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -66,6 +54,43 @@
   border-radius: 10px;
   cursor: pointer;
   transition: background linear 200ms;
+}
+
+.setsContainer {
+  height: fit-content;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.buttonSet {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  align-items: center;
+  padding: 20px 15px;
+  background-color: var(--secondary-background-color);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background linear 200ms;
+}
+
+.buttonDelete {
+  background-color: #ff3e3e;
+}
+
+.buttonAccent {
+  background-color: var(--primary-text-color);
+}
+
+.buttonAccent .mathSymboltText {
+  color: var(--background-color);
 }
 
 .selectedOption {
@@ -90,6 +115,14 @@
   color: var(--primary-text-color);
 }
 
+.buttonSet:hover {
+  background-color: var(--primary-color);
+}
+
+.buttonSet:hover .mathSymboltText {
+  color: var(--primary-text-color);
+}
+
 .buttonOption:hover .buttonSubtitle {
   color: var(--primary-text-color);
 }
@@ -100,7 +133,7 @@
 }
 
 .mathSymboltText {
-  font-size: x-large;
+  font-size: large;
   font-weight: bold;
   color: var(--primary-text-color);
 }

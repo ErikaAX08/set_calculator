@@ -1,18 +1,27 @@
 import styles from "./Keyboard.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronLeft,
+  faChevronRight,
+  faDeleteLeft,
+  faC,
+  faEquals,
+} from "@fortawesome/free-solid-svg-icons";
 
 import React, { useEffect, useState } from "react";
 
 interface KeyboardProps {
   isMenuOpen: boolean;
+  isUniversalSet: boolean;
+  letters: string[];
 }
 
-const Keyboard: React.FC<KeyboardProps> = ({ isMenuOpen }) => {
-  const [selectedOperation, setSelectedOperation] = useState<number>(0);
+const Keyboard: React.FC<KeyboardProps> = ({
+  isMenuOpen,
+  isUniversalSet,
+  letters,
+}) => {
   const [isInputDisabled, setIsInputDisabled] = useState(false);
-
-  const handleOperationClick = (operation: number) => {
-    setSelectedOperation(operation);
-  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -47,70 +56,69 @@ const Keyboard: React.FC<KeyboardProps> = ({ isMenuOpen }) => {
         </span>
       </form>
       <div className={styles.buttonsContainer}>
-        <div
-          className={`${styles.buttonOption} ${
-            selectedOperation == 0 ? styles.selectedOption : ""
-          }`}
-        >
+        <div className={styles.buttonOption}>
           <p className={styles.mathSymboltText}>P(x)</p>
         </div>
-        <div
-          className={`${styles.buttonOption} ${
-            selectedOperation == 1 ? styles.selectedOption : ""
-          }`}
-        >
+        <div className={styles.buttonOption}>
           <p className={styles.mathSymboltText}>(x)</p>
         </div>
-        <div
-          className={`${styles.buttonOption} ${
-            selectedOperation == 2 ? styles.selectedOption : ""
-          }`}
-        >
-          <p className={styles.mathSymboltText}>C</p>
+        <div className={`${styles.buttonOption} ${styles.buttonDelete}`}>
+          <FontAwesomeIcon icon={faC} className={styles.mathSymboltText} />
         </div>
-        <div
-          className={`${styles.buttonOption} ${
-            selectedOperation == 3 ? styles.selectedOption : ""
-          }`}
-        >
+        <div className={styles.buttonOption}>
           <p className={styles.mathSymboltText}>∪</p>
         </div>
-        <div
-          className={`${styles.buttonOption} ${
-            selectedOperation == 4 ? styles.selectedOption : ""
-          }`}
-        >
+        <div className={styles.buttonOption}>
           <p className={styles.mathSymboltText}>∩</p>
         </div>
-        <div
-          className={`${styles.buttonOption} ${
-            selectedOperation == 5 ? styles.selectedOption : ""
-          }`}
-        >
+        <div className={styles.buttonOption}>
           <p className={styles.mathSymboltText}>/</p>
         </div>
-        <div
-          className={`${styles.buttonOption} ${
-            selectedOperation == 6 ? styles.selectedOption : ""
-          }`}
-        >
+        <div className={styles.buttonOption}>
           <p className={styles.mathSymboltText}>A′</p>
         </div>
-        <div
-          className={`${styles.buttonOption} ${
-            selectedOperation == 7 ? styles.selectedOption : ""
-          }`}
-        >
+        <div className={styles.buttonOption}>
           <p className={styles.mathSymboltText}>Δ</p>
         </div>
-        <div
-          className={`${styles.buttonOption} ${
-            selectedOperation == 8 ? styles.selectedOption : ""
-          }`}
-        >
-          <p className={styles.mathSymboltText}>=</p>
+        <div className={styles.buttonOption}>
+          <FontAwesomeIcon
+            icon={faDeleteLeft}
+            className={styles.mathSymboltText}
+          />
+        </div>
+        <div className={styles.buttonOption}>
+          <FontAwesomeIcon
+            icon={faChevronLeft}
+            className={styles.mathSymboltText}
+          />
+        </div>
+        <div className={styles.buttonOption}>
+          <FontAwesomeIcon
+            icon={faChevronRight}
+            className={styles.mathSymboltText}
+          />
+        </div>
+        <div className={`${styles.buttonOption} ${styles.buttonAccent}`}>
+          <FontAwesomeIcon icon={faEquals} className={styles.mathSymboltText} />
         </div>
       </div>
+      {isUniversalSet && (
+        <div>
+          <h4>Available sets</h4>
+          <div className={styles.setsContainer}>
+            {isUniversalSet && (
+              <div className={`${styles.buttonSet} ${styles.buttonAccent}`}>
+                <p className={styles.mathSymboltText}>U</p>
+              </div>
+            )}
+            {letters.map((letter, index) => (
+              <div key={index} className={`${styles.buttonSet}`}>
+                <p className={styles.mathSymboltText}>{letter}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

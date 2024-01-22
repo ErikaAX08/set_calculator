@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faCalculator } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 
 import styles from "./Header.module.css";
@@ -18,8 +18,8 @@ const Header: React.FC<HeaderProps> = ({ onHandleMenuToggle, isMenuOpen }) => {
     <header className={styles.container}>
       <h1 className={styles.title}>Sets Calculator</h1>
       <FontAwesomeIcon
-        className={`${styles.icon} ${isMenuOpen ? styles.icom_rotate : ""}`}
-        icon={faChevronDown}
+        className={styles.icon}
+        icon={ isMenuOpen ? faCalculator : faChevronDown }
         onClick={handleIconClick}
       />
     </header>

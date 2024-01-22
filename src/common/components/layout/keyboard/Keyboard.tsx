@@ -1,6 +1,6 @@
 import styles from "./Keyboard.module.css";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface KeyboardProps {
   isMenuOpen: boolean;
@@ -8,16 +8,43 @@ interface KeyboardProps {
 
 const Keyboard: React.FC<KeyboardProps> = ({ isMenuOpen }) => {
   const [selectedOperation, setSelectedOperation] = useState<number>(0);
+  const [isInputDisabled, setIsInputDisabled] = useState(false);
 
   const handleOperationClick = (operation: number) => {
     setSelectedOperation(operation);
   };
- 
+
+  useEffect(() => {
+    const handleResize = () => {
+      const maxWidthForDisabledInput = 1024;
+      const currentWidth = window.innerWidth;
+      setIsInputDisabled(currentWidth < maxWidthForDisabledInput);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
-    <div className={ `${styles.container} ${ isMenuOpen ? styles.container_hidde : "" }` } >
-      <form className={ styles.inputContainer }>
-        <input className={ styles.input } placeholder="" />
-        <span className={ styles.calculatorMessage } >Error performing operation</span>
+    <div
+      className={`${styles.container} ${
+        isMenuOpen ? styles.container_hidde : ""
+      }`}
+    >
+      <form className={styles.inputContainer}>
+        <input
+          className={styles.input}
+          placeholder=""
+          disabled={isInputDisabled}
+        />
+        <span className={styles.calculatorMessage}>
+          Error performing operation
+        </span>
       </form>
       <div className={styles.buttonsContainer}>
         <div

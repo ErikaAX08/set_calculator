@@ -16,6 +16,7 @@
 }
 
 .contentContainer {
+  position: relative;
   flex: 1;
   overflow: hidden;
   flex-basis: 100%;

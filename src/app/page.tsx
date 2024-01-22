@@ -86,13 +86,13 @@ export default function Home() {
     const scrollToEnd = () => {
       if (automaticScroll && resultsContainerRef.current) {
         const container = resultsContainerRef.current;
-        container.scrollTop = container.scrollHeight + 3000;
+        container.scrollTop = container.scrollHeight + 5000;
       }
     };
     
     scrollToEnd();
   
-    const intervalId: NodeJS.Timeout = setInterval(scrollToEnd, 1000);
+    const intervalId: NodeJS.Timeout = setInterval(scrollToEnd, 100);
   
     return () => {
       clearInterval(intervalId);

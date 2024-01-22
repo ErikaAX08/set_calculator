@@ -11,7 +11,7 @@ import { useState, useEffect, useRef } from "react";
 export default function Home() {
   const [sets, setSets] = useState<Set[]>([]);
   const [universalSet, setUniversalSet] = useState<Set | null>(null);
-  const [selectedOperation, setSelectedOperation] = useState<number>(0);
+  // const [selectedOperation, setSelectedOperation] = useState<number>(0);
   const [letters, setLetters] = useState<string[]>([]);
   const [result, setResult] = useState<ResultItem[]>([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -63,9 +63,9 @@ export default function Home() {
 
   useEffect(() => {
     if (sets.length >= 2) {
-      setResult(handleOperation(sets, letters, selectedOperation));
+      setResult(handleOperation(universalSet, sets, letters));
     }
-  }, [selectedOperation, letters, sets]);
+  }, [letters, sets, universalSet]);
 
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -123,7 +123,11 @@ export default function Home() {
 
       <div className={styles.optionsContainer}>
         <Header onHandleMenuToggle={handleMenuToggle} isMenuOpen={isMenuOpen} />
-        <Keyboard isMenuOpen={isMenuOpen} isUniversalSet={ universalSet != null } letters={letters} />
+        <Keyboard
+          isMenuOpen={isMenuOpen}
+          isUniversalSet={universalSet != null}
+          letters={letters}
+        />
         <Footer isMenuOpen={isMenuOpen} />
       </div>
     </main>

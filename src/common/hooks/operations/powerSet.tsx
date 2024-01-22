@@ -1,53 +1,45 @@
+import { cleanSet } from "@/common/components/utils";
 import { Set } from "@components/set";
+import { ResultItem } from "@components/utils/results";
 
-const powerSet = (sets: Set[], letters: string[]): string[] => {
-  let result: string[] = [];
-
-  let mainSet = sets[0].elements
-  for (
-    let currentSetIndex = 1;
-    currentSetIndex <= sets.length - 1;
-    currentSetIndex++
-  ) {
-    let nextSet = sets[currentSetIndex].elements
-    mainSet = [...mainSet, ...nextSet];
-  }
-
-  mainSet = mainSet.filter((item, index) => {
-    return mainSet.indexOf(item) === index;
-  });
-
-  const numSubsets: number = Math.pow(2, mainSet.length);
-
-  result.push(`Number of subsets: `);
-  result.push(`P(x) = ${numSubsets}`);
-
-  const cardinality = mainSet.length;
-  result.push(`Cardinality of P(x):`);
-  result.push(`2n = ${cardinality}`);
-
-  result.push(`Subsets obtained: `);
-  result.push(`{ ∅ }`);
-
-  for (let maxElements = 1; maxElements <= cardinality; maxElements++) {
-
-    for (let currentElement = 0; currentElement < cardinality; currentElement++) {
-      let subset = [mainSet[currentElement]];
-
-      if (subset.length === maxElements) {
-        result.push(`{ ${subset.join(", ")} }`);
-        continue;
-      }
-
-      for (let nextElement = currentElement + 1; nextElement < cardinality; nextElement++) {
-        subset.push(mainSet[nextElement]);
-
+const powerSet = (sets: Set[], letters: string[]) => {
+  let result: ResultItem[] = [];
+  
+  for (let currentSetIndex = 0; currentSetIndex < sets.length; currentSetIndex++) {
+    let currentSet = [...sets[currentSetIndex].elements];
+    currentSet.shift()
+    
+    currentSet = currentSet.filter((item, index) => {
+      return currentSet.indexOf(item) === index;
+    });
+    
+    const cardinality = currentSet.length;
+    
+    let powerSet: Array<string> = []
+    powerSet.push(`{ ${cleanSet('∅').formattedString} } `)
+    
+    for (let maxElements = 1; maxElements <= cardinality; maxElements++) {
+    
+      for (let currentElement = 0; currentElement < cardinality; currentElement++) {
+        let subset = [currentSet[currentElement]];
+  
         if (subset.length === maxElements) {
-          result.push(`{ ${subset.join(", ")} }`);
-          subset.pop();
+            powerSet.push(`{ ${cleanSet(subset.toString()).formattedString} }`)
+          continue;
+        }
+  
+        for (let nextElement = currentElement + 1; nextElement < cardinality; nextElement++) {
+          subset.push(currentSet[nextElement]);
+  
+          if (subset.length === maxElements) {
+            powerSet.push(`{ ${cleanSet(subset.toString()).formattedString} }`)
+            subset.pop();
+          }
         }
       }
     }
+    
+    result.push({ text: `P(${letters[currentSetIndex]}) = { ${cleanSet(powerSet.toString()).formattedString} }`, type: "default" });
   }
 
   return result;

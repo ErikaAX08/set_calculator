@@ -1,3 +1,4 @@
+import { TypewriterAnimation } from "@components/utils";
 import styles from "./Item.module.css";
 
 import React from "react";
@@ -9,12 +10,12 @@ interface ItemSetProps {
 
 const ItemSet: React.FC<ItemSetProps> = ({ set, letter }) => {
   return (
-    <h3
+    <TypewriterAnimation
       className={styles.container}
-      style={{
-        animation: `typing 0.8s steps(${set.length}, end)`,
-      }}
-    >{`${letter} = { ${set} }`}</h3>
+      text={`${letter} = { ${set} }`}
+      elementType="h3"
+      speed={10}
+    />
   );
 };
 

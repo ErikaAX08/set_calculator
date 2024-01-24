@@ -4,6 +4,7 @@ import { Set } from "@components/set";
 import { ResultItem, getResultElement } from "@components/utils/results";
 
 import React, { useEffect, useState } from "react";
+import results from ".";
 
 interface ResultProps {
   universalSet: Set | null;
@@ -20,7 +21,7 @@ const Results: React.FC<ResultProps> = ({
   result,
   letters,
   onResultsShowing,
-  onResultsShown
+  onResultsShown,
 }) => {
   const [visibleResults, setVisibleResults] = useState<ResultItem[]>([]);
 
@@ -45,9 +46,10 @@ const Results: React.FC<ResultProps> = ({
           }
         }
       }
-      
-      setTimeout(() => { onResultsShown(); }, 1000);
-      
+
+      setTimeout(() => {
+        onResultsShown();
+      }, 1000);
     };
 
     renderResultsSequentially();
@@ -55,7 +57,7 @@ const Results: React.FC<ResultProps> = ({
     return () => {
       isMounted = false;
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [result]);
 
   return (

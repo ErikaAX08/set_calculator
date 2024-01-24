@@ -1,43 +1,35 @@
 import styles from "./ResultItemStyle.module.css";
 import { ResultItem } from ".";
+import { TypewriterAnimation } from "..";
 
 const getResultElement = (resultItem: ResultItem): JSX.Element => {
   switch (resultItem.type) {
     case "title":
       return (
-        <h3
+        <TypewriterAnimation
+          text={resultItem.text}
           className={styles.resultTitle}
-          style={{
-            color: resultItem.color,
-            animation: `typing 0.8s steps(${resultItem.text.length}, end)`,
-          }}
-        >
-          {resultItem.text}
-        </h3>
+          elementType="h3"
+          speed={8}
+        />
       );
     case "boldText":
       return (
-        <p
+        <TypewriterAnimation
+          text={resultItem.text}
           className={styles.boldText}
-          style={{
-            color: resultItem.color,
-            animation: `typing 0.8s steps(${resultItem.text.length}, end)`,
-          }}
-        >
-          {resultItem.text}
-        </p>
+          elementType="p"
+          speed={8}
+        />
       );
     default:
       return (
-        <p
+        <TypewriterAnimation
+          text={resultItem.text}
           className={styles.textResult}
-          style={{
-            color: resultItem.color,
-            animation: `typing 0.8s steps(${resultItem.text.length}, end)`,
-          }}
-        >
-          {resultItem.text}
-        </p>
+          elementType="p"
+          speed={8}
+        />
       );
   }
 };

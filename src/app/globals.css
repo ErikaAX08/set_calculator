@@ -23,8 +23,3 @@
   background-color: #6b6b6b04;
   border-radius: 6px;
 }
-
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
-}

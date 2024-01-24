@@ -1,0 +1,20 @@
+.cursor {
+  display: inline-block;
+  vertical-align: middle;
+  width: 10px;
+  height: 1.2em;
+  background-color: var(--primary-text-color);
+  animation: blink-animation 0.8s infinite;
+}
+
+@keyframes blink-animation {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0;
+  }
+}

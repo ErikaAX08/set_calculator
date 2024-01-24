@@ -1,4 +1,5 @@
 import styles from "./UniversalSet.module.css";
+import { TypewriterAnimation } from "@components/utils";
 
 import React from "react";
 
@@ -9,12 +10,12 @@ interface UniversalSetṔrops {
 
 const UniversalSet: React.FC<UniversalSetṔrops> = ({ set, letter }) => {
   return (
-    <h2
+    <TypewriterAnimation
       className={styles.title}
-      style={{
-        animation: `typing 0.8s steps(${set.length}, end)`,
-      }}
-    >{`${letter} = { ${set} }`}</h2>
+      text={`${letter} = { ${set} }`}
+      elementType="h2"
+      speed={10}
+    />
   );
 };
 

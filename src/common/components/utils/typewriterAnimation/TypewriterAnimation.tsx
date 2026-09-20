@@ -16,7 +16,7 @@ const TypewriterAnimation: React.FC<TypewriterProps> = ({
 }) => {
   const [displayText, setDisplayText] = useState("");
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
-  const Element = elementType as keyof JSX.IntrinsicElements;
+  const Element = elementType as keyof React.JSX.IntrinsicElements;
 
   useEffect(() => {
     const typingInterval = setInterval(() => {

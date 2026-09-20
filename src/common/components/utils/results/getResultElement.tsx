@@ -1,6 +1,7 @@
 import styles from "./ResultItemStyle.module.css";
 import { ResultItem } from ".";
 import { TypewriterAnimation } from "..";
+import type { JSX } from "react";
 
 const getResultElement = (resultItem: ResultItem): JSX.Element => {
   switch (resultItem.type) {
